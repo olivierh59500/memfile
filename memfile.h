@@ -10,31 +10,6 @@
 	#endif
 #endif
 
-#pragma push_macro( "LOOP_0" )
-#pragma push_macro( "LOOP_0( F, N )" )
-#pragma push_macro( "LOOP_1( F, N ) F( 1 )" )
-#pragma push_macro( "LOOP_2( F, N ) LOOP_1( F, N ), F( 2 )" )
-#pragma push_macro( "LOOP_3( F, N ) LOOP_2( F, N ), F( 3 )" )
-#pragma push_macro( "LOOP_4( F, N ) LOOP_3( F, N ), F( 4 )" )
-#pragma push_macro( "LOOP_5( F, N ) LOOP_4( F, N ), F( 5 )" )
-#pragma push_macro( "LOOP_6( F, N ) LOOP_5( F, N ), F( 6 )" )
-#pragma push_macro( "LOOP_7( F, N ) LOOP_6( F, N ), F( 7 )" )
-#pragma push_macro( "LOOP_8( F, N ) LOOP_7( F, N ), F( 8 )" )
-#pragma push_macro( "ITERATE_0( F )" )
-#pragma push_macro( "ITERATE_1( F ) F( 1 )" )
-#pragma push_macro( "ITERATE_2( F ) ITERATE_1( F ) F( 2 )" )
-#pragma push_macro( "ITERATE_3( F ) ITERATE_2( F ) F( 3 )" )
-#pragma push_macro( "ITERATE_4( F ) ITERATE_3( F ) F( 4 )" )
-#pragma push_macro( "ITERATE_5( F ) ITERATE_4( F ) F( 5 )" )
-#pragma push_macro( "ITERATE_6( F ) ITERATE_5( F ) F( 6 )" )
-#pragma push_macro( "ITERATE_7( F ) ITERATE_6( F ) F( 7 )" )
-#pragma push_macro( "ITERATE_8( F ) ITERATE_7( F ) F( 8 )" )
-#pragma push_macro( "ITERATE" )
-#pragma push_macro( "LOOP" )
-#pragma push_macro( "SCANF_PARAMS" )
-#pragma push_macro( "SCANF_ARGS" )
-#pragma push_macro( "FSCANF_FUNC" )
-
 #define LOOP_0( F, N )
 #define LOOP_1( F, N ) F( 1 )
 #define LOOP_2( F, N ) LOOP_1( F, N ), F( 2 )
@@ -99,8 +74,8 @@ inline void FormatMemfileBuffer( const char* format, char* buffer )
 #define SCANF_ARGS( N ) \
 	argument_##N
 
-#define FSCANF_FUNC( N ) \
-	inline int fscanf( MEM_FILE* file, const char* format, LOOP( SCANF_PARAMS, N ) ) \
+#define SCANF_FUNC( N ) \
+	inline int mscanf( MEM_FILE* file, const char* format, LOOP( SCANF_PARAMS, N ) ) \
 	{ \
 		char buffer[ 256 ]; \
 		int bytes_read; \
@@ -111,32 +86,7 @@ inline void FormatMemfileBuffer( const char* format, char* buffer )
 		return ret; \
 	}
 
-ITERATE( FSCANF_FUNC, 8 )
-
-#pragma pop_macro( "LOOP_0" )
-#pragma pop_macro( "LOOP_0( F, N )" )
-#pragma pop_macro( "LOOP_1( F, N ) F( 1 )" )
-#pragma pop_macro( "LOOP_2( F, N ) LOOP_1( F, N ), F( 2 )" )
-#pragma pop_macro( "LOOP_3( F, N ) LOOP_2( F, N ), F( 3 )" )
-#pragma pop_macro( "LOOP_4( F, N ) LOOP_3( F, N ), F( 4 )" )
-#pragma pop_macro( "LOOP_5( F, N ) LOOP_4( F, N ), F( 5 )" )
-#pragma pop_macro( "LOOP_6( F, N ) LOOP_5( F, N ), F( 6 )" )
-#pragma pop_macro( "LOOP_7( F, N ) LOOP_6( F, N ), F( 7 )" )
-#pragma pop_macro( "LOOP_8( F, N ) LOOP_7( F, N ), F( 8 )" )
-#pragma pop_macro( "ITERATE_0( F )" )
-#pragma pop_macro( "ITERATE_1( F ) F( 1 )" )
-#pragma pop_macro( "ITERATE_2( F ) ITERATE_1( F ) F( 2 )" )
-#pragma pop_macro( "ITERATE_3( F ) ITERATE_2( F ) F( 3 )" )
-#pragma pop_macro( "ITERATE_4( F ) ITERATE_3( F ) F( 4 )" )
-#pragma pop_macro( "ITERATE_5( F ) ITERATE_4( F ) F( 5 )" )
-#pragma pop_macro( "ITERATE_6( F ) ITERATE_5( F ) F( 6 )" )
-#pragma pop_macro( "ITERATE_7( F ) ITERATE_6( F ) F( 7 )" )
-#pragma pop_macro( "ITERATE_8( F ) ITERATE_7( F ) F( 8 )" )
-#pragma pop_macro( "ITERATE" )
-#pragma pop_macro( "LOOP" )
-#pragma pop_macro( "SCANF_PARAMS" )
-#pragma pop_macro( "SCANF_ARGS" )
-#pragma pop_macro( "FSCANF_FUNC" )
+ITERATE( SCANF_FUNC, 8 )
 
 #define MEMFILE_H
 #endif

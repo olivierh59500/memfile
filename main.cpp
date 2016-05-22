@@ -21,7 +21,7 @@ int main( )
 	while ( fp.bytes_read < poem_size )
 	{
 		char buffer[ 256 ];
-		fscanf( &fp, "%s", buffer );
+		mscanf( &fp, "%s", buffer );
 		printf( "%s ", buffer );
 	}
 }
