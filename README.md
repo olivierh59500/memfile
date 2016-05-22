@@ -5,4 +5,4 @@ memfile is a C header for opening files in memory by mimicking the functionaliy 
     char buffer[ 256 ];
     fscanf( &fp, "%s", buffer );
 
-Just include memfile.h and you're good to go. I've created an example to demonstrate usage in main.c.
+Just include memfile.h and you're good to go. I've created an example to demonstrate usage in main.c. As extra goodies I've included the incbin script I used to generate the poem symbol from main.c (incbin.pl stolen from Richard Mitton).
