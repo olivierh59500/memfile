@@ -1,7 +1,9 @@
 #if !defined( MEMFILE_H )
 
+#ifdef _DEBUG
 #include <assert.h>
 #include <string.h>
+#endif
 
 #ifdef WIN32
 	#define inline __inline
@@ -65,6 +67,16 @@ inline void FormatMemfileBuffer( const char* format, char* buffer )
 	buffer[ i ] = '%';
 	buffer[ i + 1 ] = 'n';
 	buffer[ i + 2 ] = 0;
+}
+
+//--------------------------------------------------------------------------------------------------
+inline void mseek( MEM_FILE* fp, int offset )
+{
+#ifdef _DEBUG
+	assert( fp->bytes_read + offset >= 0 );
+#endif
+
+	fp->bytes_read = offset;
 }
 
 //--------------------------------------------------------------------------------------------------

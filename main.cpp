@@ -14,14 +14,21 @@ const int poem_size = (int)sizeof(poem);
 int main( )
 {
 	MEM_FILE fp;
+	char buffer[ 256 ];
+	
 	OpenFileInMemory( &fp, poem );
 
 	// prints:
 	// the spider crawled on up the web and smiled :)
 	while ( fp.bytes_read < poem_size )
 	{
-		char buffer[ 256 ];
 		mscanf( &fp, "%s", buffer );
 		printf( "%s ", buffer );
 	}
+
+	// prints:
+	// spider
+	mseek( &fp, 4 );
+	mscanf( &fp, "%s", buffer );
+	printf( "%s ", buffer );
 }
