@@ -74,7 +74,7 @@ inline void OpenFileInMemory( MEM_FILE* file, const void* data )
 }
 
 //--------------------------------------------------------------------------------------------------
-inline void FormatMemfileBuffer( const char* format, char* formatBuffer )
+inline void FormatMemfileBuffer( const char* format, char* buffer )
 {
 	int i;
 
@@ -84,12 +84,12 @@ inline void FormatMemfileBuffer( const char* format, char* formatBuffer )
 
 	for ( i = 0; format[ i ]; ++i )
 	{
-		formatBuffer[ i ] = format[ i ];
+		buffer[ i ] = format[ i ];
 	}
 
-	formatBuffer[ i ] = '%';
-	formatBuffer[ i + 1 ] = 'n';
-	formatBuffer[ i + 2 ] = 0;
+	buffer[ i ] = '%';
+	buffer[ i + 1 ] = 'n';
+	buffer[ i + 2 ] = 0;
 }
 
 //--------------------------------------------------------------------------------------------------
